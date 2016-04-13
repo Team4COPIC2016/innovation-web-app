@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/Team4COPIC2016/innovation-web-app#readme",
   "dependencies": {
+    "angular-resource": "^1.5.3",
+    "angular-route": "^1.5.3",
     "body-parser": "^1.15.0",
-<<<<<<< HEAD
     "bootstrap": "^4.0.0-alpha.2",
-=======
->>>>>>> parent of d11a364... Angular & Bootstrap added
     "express": "^4.13.4",
+    "jade": "^1.11.0",
     "stylus": "^0.54.2"
   }
 }

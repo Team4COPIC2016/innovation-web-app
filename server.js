@@ -25,8 +25,7 @@ app.get('/partials/:partialPath', function(request, response){
 	response.render('partials/' + request.params.partialPath);
 });
 //use server routing to serve JSON for API
-/*app.get('*', function(request, response) {
-	response.json("Hello, World!");
+app.get('*', function(request, response) {
+	response.render('index');
 });
-*/
 app.listen(port);
