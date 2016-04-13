@@ -19,7 +19,6 @@ app.use(stylus.middleware(
 //deliver static content from the public directory
 app.use(express.static(__dirname + '/public/'));
 app.use(express.static(__dirname + '/node_modules/'));
-
 app.set('port', port);
 //use server routing for partials so that the Jade view engine can resolve the HTML
 app.get('/partials/:partialPath', function(request, response){
@@ -27,7 +26,7 @@ app.get('/partials/:partialPath', function(request, response){
 });
 //use server routing to serve JSON for API
 /*app.get('*', function(request, response) {
-	//response.json("Hello, World!");
-	res.sendfile('./public/app/index.html');
-});*/
+	response.json("Hello, World!");
+});
+*/
 app.listen(port);
