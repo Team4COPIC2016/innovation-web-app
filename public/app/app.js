@@ -7,6 +7,8 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 	});
 	$routeProvider.when('/', { templateUrl: '/partials/homepage.jade' })
 	.when('/tasks/', { templateUrl: '/partials/tasks.jade', controller: 'taskController' })
+	.when('/employees/', { templateUrl: '/partials/employees.jade', controller: 'taskController' })
+
 	.otherwise({ redirectTo: '/error/' });
 });
 
