@@ -50,6 +50,16 @@ app.get('/api/tasks/', function(request, response){
         "description" : "get dummy service 3",
         "id": 3
      },
+     "task4" : {
+        "name" : "get dummy service 4",
+        "description" : "get dummy service 4",
+        "id": 4
+     },
+     "task5" : {
+        "name" : "get dummy service 5",
+        "description" : "get dummy service 5",
+        "id": 5
+     },
   }
   response.json(object);
 });
