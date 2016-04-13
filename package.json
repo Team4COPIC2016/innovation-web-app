@@ -20,10 +20,12 @@
   "dependencies": {
     "angular-resource": "^1.5.3",
     "angular-route": "^1.5.3",
+    "aws-sdk": "^2.3.3",
     "body-parser": "^1.15.0",
     "bootstrap": "^4.0.0-alpha.2",
     "express": "^4.13.4",
     "jade": "^1.11.0",
+    "promise": "^7.1.1",
     "stylus": "^0.54.2"
   }
 }

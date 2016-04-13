@@ -2,6 +2,7 @@ var express = require('express');
 var stylus = require('stylus');
 var fs = require("fs");
 var bodyParser = require('body-parser');
+var taskService = require('./server/services/task.js')
 var port = process.env.PORT || 3030;
 var environment = process.env.NODE_ENV || 'development';
 var app = express();
@@ -23,6 +24,13 @@ app.set('port', port);
 //use server routing for partials so that the Jade view engine can resolve the HTML
 app.get('/partials/:partialPath', function(request, response){
 	response.render('partials/' + request.params.partialPath);
+});
+
+app.post('/api/task/', function(request, response){
+  var task = JSON.parse(JSON.stringify(request.body));
+  taskService.post(task).then(function(data) {
+    response.json(data);
+  })
 });
 
 app.get('/api/tasks/', function(request, response){
