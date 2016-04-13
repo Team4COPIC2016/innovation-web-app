@@ -1,6 +1,19 @@
 html
   title My employees
   body
+    h1(ng-show = "success") Success!
+    h1(ng-show = "failure") Failure!
     h1 Manage employees
-    p Sample data: Person 1 - location - ID - title
-    a(href="/createEmployee.jade") Create a new employee
+    h2 Create new employee
+    p First name
+      input(type="text", name="FirstName", ng-model="form.firstName")
+    p Last name
+      input(type="text", name="LastName", ng-model="form.lastName")
+    p Location
+      input(type="text", name="Location", ng-model="form.location")
+    p Manager
+      input(type="text", name="Manager", ng-model="form.manager")
+    p Job title
+      input(type="text", name="JobTitle", ng-model="form.jobTitle")
+    p
+      button(ng-click="submit()") Submit

@@ -7,11 +7,20 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 	});
 	$routeProvider.when('/', { templateUrl: '/partials/homepage.jade' })
 	.when('/tasks/', { templateUrl: '/partials/tasks.jade', controller: 'taskController' })
-	.when('/employees/', { templateUrl: '/partials/employees.jade', controller: 'taskController' })
+	.when('/employees/', { templateUrl: '/partials/employees.jade', controller: 'addEmployeeController' })
 
 	.otherwise({ redirectTo: '/error/' });
 });
 
-angular.module('app').controller('taskController', function() {
-	console.log('tasks');
+angular.module('app').controller('addEmployeeController', function($scope, $http) {
+	$scope.form = {};
+	$scope.success = false;
+	$scope.error = false;
+	$scope.submit = function() {
+		$scope.success = true;
+		/*$http.post('/api/employee', $scope.form, function(){
+			//return a success message
+		});*/
+		//console.log($scope.form);
+	};
 });
