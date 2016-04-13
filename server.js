@@ -24,32 +24,26 @@ app.set('port', port);
 app.get('/partials/:partialPath', function(request, response){
 	response.render('partials/' + request.params.partialPath);
 });
-//use server routing to serve JSON for API
-app.get('/api/test/', function(request, response) {
-	console.log(request);
-	response.json("Hello, World!");
-});
 
-app.get('/api/listUsers/', function (req, res) {
-   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-       console.log( data );
-       res.end( data );
-   });
-})
-
-app.get('/api/:id/', function (req, res) {
-   // First read existing users.
-   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-       users = JSON.parse( data );
-       var user = users["user" + req.params.id]
-       console.log( user );
-       res.end( JSON.stringify(user));
-   });
-})
-
-app.post('/api/return/', function(request, response){
-    console.log(request.body);
-		response.json(request.body);
+app.get('/api/tasks/', function(request, response){
+  var object = {
+     "task1" : {
+        "name" : "get dummy service 1",
+        "description" : "get dummy service 1",
+        "id": 1
+     },
+     "task2" : {
+        "name" : "get dummy service 2",
+        "description" : "get dummy service 2",
+        "id": 2
+     },
+     "task3" : {
+        "name" : "get dummy service 3",
+        "description" : "get dummy service 3",
+        "id": 3
+     },
+  }
+  response.json(object);
 });
 
 app.listen(port);
