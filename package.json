@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Team4COPIC2016/innovation-web-app#readme",
   "dependencies": {
+    "angular": "^1.5.3",
     "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "stylus": "^0.54.2"
   }
