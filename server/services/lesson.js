@@ -55,7 +55,7 @@ module.exports = {
 			var client = new AWS.DynamoDB.DocumentClient();
 
 			var params = {
-					TableName : "Lessons"
+					TableName : "Lesson"
 				};
 
 			client.scan(params, function(err, data) {

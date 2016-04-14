@@ -1,0 +1,19 @@
+html
+  title My lessons
+  body
+    h1(ng-show = "success") Success!
+    h1(ng-show = "failure") Failure!
+    h1 Manage lessons
+    h2 Create new lesson
+    div(class="form")
+      p Title
+        div(class="text-box")
+          input(type="text", name="title", ng-model="form.lesson_title")
+      p Description
+        div(class="text-box")
+          input(type="text", name="description", ng-model="form.lesson_description")
+      p Employee name
+        div(class="text-box")
+          input(type="text", name="employee_name", ng-model="form.lesson_employee_name")
+      p
+        button(ng-click="submit()") Submit
