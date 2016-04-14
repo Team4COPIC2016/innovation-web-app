@@ -1,30 +1,21 @@
-html
-  title My employees
-  body
-    h3(ng-show = "success") <span style = "color: green">Success!</span>
-    h3(ng-show = "failure") Failure!
-    h2 Create new employee
-    div(class="form")
-      p First Name
-        div(class="text-box")
-          input(type="text", name="FirstName", ng-model="form.employee_first_name")
-      p Last Name
-        div(class="text-box")
-          input(type="text", name="LastName", ng-model="form.employee_last_name")
-      p Location
-        div(class="text-box")
-          input(type="text", name="Location", ng-model="form.employee_location")
-      p Manager
-        div(class="text-box")
-          select(ng-model = "form.employee_manager", ng-options = "manager.employee_id as (manager.employee_first_name + ' ' + manager.employee_last_name) for manager in managers")
-      p Job Title
-        div(class="text-box")
-          input(type="text", name="JobTitle", ng-model="form.employee_job_title")
-      p Manager
-        div(class="text-box")
-          input(type="checkbox", name="isManager", ng-model="form.employee_is_manager")
-      p Executive
-        div(class="text-box")
-          input(type="checkbox", name="isExecutive", ng-model="form.employee_is_executive")
-      p
-        button(ng-click="submit()") Submit
+div(ng-if = "!loading")
+  table(class="table table-striped")
+    thead
+      tr
+        th(colspan="4")
+          h1 My employees
+      tr
+        th First Name
+        th Last Name
+        th Location
+        th Job Title
+        th Is Manager
+        th Is Executive
+    tbody
+      tr(ng-repeat="employee in employees")
+        td {{employee.employee_first_name}}
+        td {{employee.employee_last_name}}
+        td {{employee.employee_location}}
+        td {{employee.employee_job_title}}
+        td {{employee.employee_is_manager}}
+        td {{employee.employee_is_executive}}

@@ -1,0 +1,21 @@
+div(ng-if = "!loading")
+  table(class="table table-striped")
+    thead
+      tr
+        th(colspan="4")
+          h1 My employees
+      tr
+        th Project Name
+        th Description
+        th Start Date
+        th End Date
+        th Estimated Cost
+        th Estimated ROI
+    tbody
+      tr(ng-repeat="project in projects")
+        td {{project.project_name}}
+        td {{project.project_description}}
+        td {{project.project_start_date}}
+        td {{project.project_end_date}}
+        td {{employee.project_estimated_cost}}
+        td {{employee.project_estimated_roi}}
