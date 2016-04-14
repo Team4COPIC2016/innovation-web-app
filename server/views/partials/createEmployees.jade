@@ -1,0 +1,25 @@
+html
+  title My employees
+  body
+    h1(ng-show = "success") Success!
+    h1(ng-show = "failure") Failure!
+    h1 Manage employees
+    h2 Create new employee
+    div(class="form")
+      p First name
+        div(class="text-box")
+          input(type="text", name="FirstName", ng-model="form.firstName")
+      p Last name
+        div(class="text-box")
+          input(type="text", name="LastName", ng-model="form.lastName")
+      p Location
+        div(class="text-box")
+          input(type="text", name="Location", ng-model="form.location")
+      p Manager
+        div(class="text-box")
+          input(type="text", name="Manager", ng-model="form.manager")
+      p Job title
+        div(class="text-box")
+          input(type="text", name="JobTitle", ng-model="form.jobTitle")
+      p
+        button(ng-click="submit()") Submit

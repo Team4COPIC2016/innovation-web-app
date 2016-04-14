@@ -6,9 +6,10 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 		requireBase : false
 	});
 	$routeProvider.when('/', { templateUrl: '/partials/homepage.jade' })
-	.when('/tasks', { templateUrl: '/partials/tasks.jade', controller: 'addTaskController' })
+	.when('/createTasks', { templateUrl: '/partials/createTasks.jade', controller: 'addTaskController' })
 	.when('/employees', { templateUrl: '/partials/employees.jade', controller: 'addEmployeeController' })
-	.when('/projects', { templateUrl: '/partials/projects.jade', controller: 'addProjectController' })
+	.when('/createEmployees', { templateUrl: '/partials/createEmployees.jade', controller: 'addEmployeeController' })
+	.when('/createProjects', { templateUrl: '/partials/createProjects.jade', controller: 'addProjectController' })
 	.otherwise({ redirectTo: '/error/' });
 });
 
