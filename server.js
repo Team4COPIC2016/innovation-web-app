@@ -102,6 +102,8 @@ app.get('/api/employees/', function(request, response){
 		response.json(result);
 	});
 })
+
+//app.get('/api/employeesInGroup', )
 /////////////////////////////////////////////////////////////
 app.post('/api/project/', function(request, response){
   var project = JSON.parse(JSON.stringify(request.body));
@@ -116,8 +118,8 @@ app.get('/api/project/:name', function(request, response){
 	});
 })
 
-app.get('/api/getprojectbyID/:id', function(request, response){
-	projectService.getbyID(request.params.id).then(function(result){
+app.get('/api/getProjectByID/:id', function(request, response){
+	projectService.getByID(request.params.id).then(function(result){
 		response.json(result);
 	});
 })
@@ -176,6 +178,16 @@ app.get('/api/lessons/', function(request, response){
 	lessonService.getAllLessons().then(function(result){
 		response.json(result);
 	});
+})
+
+app.get('/api/lessonsForEmployee/:id', function(request, response){
+	lessonService.getLessonsForEmployee(request.params.id).then(function(result){
+		var lessons = [];
+		for(index = 0; index < result.length; index++){
+			lessons[index] = result[index].lesson_name;
+		}
+		response.json(lessons);
+	})
 })
 ////////////////////////////////////////////////////////////
 
