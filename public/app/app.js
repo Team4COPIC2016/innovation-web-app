@@ -68,6 +68,20 @@ angular.module('app').controller('addTaskController', function($scope, $http) {
 	};
 });
 
+angular.module('app').controller('addGroupController', function($scope, $http) {
+	$scope.form = {};
+	$scope.success = false;
+	$scope.error = false;
+	$http.get('/api/employees/').then(function(response){
+		$scope.employees = response.data;
+	});
+	$scope.submit = function() {
+		$http.post('/api/group', $scope.form).then(function(data) {
+			$scope.success = true;
+		});
+	};
+});
+
 angular.module('app').controller('viewEmployeesController', function($scope, $http) {
 	$scope.loading = true;
 	$scope.employees = [];
