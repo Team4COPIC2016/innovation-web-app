@@ -9,10 +9,7 @@ div(ng-if = "!loading")
         th Description
         th Members
     tbody
-      tr(ng-repeat="task in tasks")
-        td {{employee.employee_first_name}}
-        td {{employee.employee_last_name}}
-        td {{employee.employee_location}}
-        td {{employee.employee_job_title}}
-        td {{employee.employee_is_manager}}
-        td {{employee.employee_is_executive}}
+      tr(ng-repeat="group in groups")
+        td {{group.group_name}}
+        td {{group.group_description}}
+        td {{group.group_members}}
