@@ -26,6 +26,9 @@ angular.module('app').controller('addEmployeeController', function($scope, $http
 	$http.get('/api/employees/').then(function(response){
 		$scope.managers = response.data;
 	});
+	$http.get('/api/groups/').then(function(response){
+		$scope.groups = response.data;
+	});
 	$scope.submit = function() {
 		$scope.success = true;
 		$http.post('/api/employee', $scope.form).then(function(data) {
@@ -61,8 +64,27 @@ angular.module('app').controller('addTaskController', function($scope, $http) {
 	$http.get('/api/employees/').then(function(response){
 		$scope.employees = response.data;
 	});
+	$http.get('/api/projects/').then(function(response){
+		$scope.projects = response.data;
+	});
 	$scope.submit = function() {
+		$scope.success = true;
 		$http.post('/api/task', $scope.form).then(function(data) {
+			console.log(data);
+		});
+		console.log($scope.form);
+	};
+});
+
+angular.module('app').controller('addLessonController', function($scope, $http) {
+	$scope.form = {};
+	$scope.success = false;
+	$scope.error = false;
+	$http.get('/api/employees/').then(function(response){
+		$scope.employees = response.data;
+	});
+	$scope.submit = function() {
+		$http.post('/api/lesson/', $scope.form).then(function(data) {
 			$scope.success = true;
 		});
 	};

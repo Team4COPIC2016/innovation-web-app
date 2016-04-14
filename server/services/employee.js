@@ -34,7 +34,7 @@ module.exports = {
 					},
 					FilterExpression: "#id = :id",
 					ExpressionAttributeValues: {
-						":name" : employee_id
+						":id" : employee_id
 					}
 				};
 
