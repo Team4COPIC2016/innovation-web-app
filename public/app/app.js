@@ -62,7 +62,23 @@ angular.module('app').controller('addTaskController', function($scope, $http) {
 		$scope.employees = response.data;
 	});
 	$scope.submit = function() {
+		$scope.success = true;
 		$http.post('/api/task', $scope.form).then(function(data) {
+			console.log(data);
+		});
+		console.log($scope.form);
+	};
+});
+
+angular.module('app').controller('addLessonController', function($scope, $http) {
+	$scope.form = {};
+	$scope.success = false;
+	$scope.error = false;
+	$http.get('/api/employees/').then(function(response){
+		$scope.employees = response.data;
+	});
+	$scope.submit = function() {
+		$http.post('/api/lesson/', $scope.form).then(function(data) {
 			$scope.success = true;
 		});
 	};

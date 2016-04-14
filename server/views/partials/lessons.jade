@@ -7,9 +7,9 @@ div(ng-if = "!loading")
       tr
         th Title
         th Description
-        th Employee name
+        th Employee ID
     tbody
       tr(ng-repeat="lesson in lessons")
-        td {{lesson.lesson_name}}
+        td {{lesson.lesson_title}}
         td {{lesson.lesson_description}}
         td {{lesson.employee_id}}
