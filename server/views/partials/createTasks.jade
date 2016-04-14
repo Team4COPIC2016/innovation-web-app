@@ -15,5 +15,8 @@ html
       p Project
         div(class="text-box")
           input(type="text", name="project", ng-model="form.Task_project")
+      p Employee
+        div(class="text-box")
+          select(ng-model = "form.employee_id", ng-options = "employee.employee_id as (employee.employee_first_name + ' ' + employee.employee_last_name) for employee in employees")
       p
         button(ng-click="submit()") Submit
