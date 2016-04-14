@@ -94,4 +94,32 @@ module.exports = {
       });
     });
 	},
+
+	getEmployeesInGroup: function(group_id) {
+		return new Promise(function(fulfill, reject) {
+			var client = new AWS.DynamoDB.DocumentClient();
+
+			var params = {
+					TableName : "Employee",
+					ExpressionAttributeNames: {
+						"#group" : "group_id"
+					},
+					FilterExpression: "#group = :group",
+					ExpressionAttributeValues: {
+						":group" : group_id
+					}
+				};
+
+			client.scan(params, function(err, data) {
+					if (err) {
+							console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+							fulfill(err);
+					} else {
+							console.log("Query succeeded.");
+							console.log(data.Items);
+							fulfill(data.Items);
+					}
+			});
+		});
+	}
 }
