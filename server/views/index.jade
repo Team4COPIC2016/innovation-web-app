@@ -19,17 +19,45 @@ block main-content
 						li(class="active")
 							a(href="/") Home
 						li(class="dropdown")
-							a(href="/createEmployees" class = "dropdown-toggle" data-toggle="dropdown") Employees
+							a(href="/" class="dropdown-toggle" data-toggle="dropdown") Employees
 								b(class="caret")
-								ul(class="dropdown-menu")
-									li
-										a(href="/employees") Create new employee
-									li
-										a(href="/employees") View employees
-						li(class="active")
-							a(href="/createTasks") Tasks
-						li(class="active")
-							a(href="/createProjects") Projects
+							ul(class="dropdown-menu")
+								li
+									a(href="/createEmployees") Create new employee
+								li
+									a(href="/employees") View all employees
+						li(class="dropdown")
+							a(href="/" class="dropdown-toggle" data-toggle="dropdown") Tasks
+								b(class="caret")
+							ul(class="dropdown-menu")
+								li
+									a(href="/createTasks") Create new task
+								li
+									a(href="/tasks") View all tasks
+						li(class="dropdown")
+							a(href="/" class="dropdown-toggle" data-toggle="dropdown") Projects
+								b(class="caret")
+							ul(class="dropdown-menu")
+								li
+									a(href="/createProjects") Create new project
+								li
+									a(href="/projects") View all projects
+						li(class="dropdown")
+							a(href="/" class="dropdown-toggle" data-toggle="dropdown") Groups
+								b(class="caret")
+							ul(class="dropdown-menu")
+								li
+									a(href="/createGroups") Create new group
+								li
+									a(href="/groups") View all groups
+						li(class="dropdown")
+							a(href="/" class="dropdown-toggle" data-toggle="dropdown") Lessons
+								b(class="caret")
+							ul(class="dropdown-menu")
+								li
+									a(href="/createLessons") Create new lesson
+								li
+									a(href="/lessons") View all lessons
 
 		nav(class="navbar navbar-inverse navbar-fixed-bottom")
 			div(class="container")

@@ -23,7 +23,7 @@ module.exports = {
 			});
 		});
 	},
-  getbyID: function(project_id) {
+  getByID: function(project_id) {
     return new Promise(function(fulfill, reject) {
       var client = new AWS.DynamoDB.DocumentClient();
 
@@ -44,7 +44,7 @@ module.exports = {
               fulfill(err);
           } else {
               console.log("Query succeeded.");
-              fulfill(data.Item);
+              fulfill(data.Items);
           }
       });
     });

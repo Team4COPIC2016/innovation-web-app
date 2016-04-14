@@ -1,0 +1,18 @@
+div(ng-if = "!loading")
+  table(class="table table-striped")
+    thead
+      tr
+        th(colspan="4")
+          h1 My groups
+      tr
+        th Name
+        th Description
+        th Members
+    tbody
+      tr(ng-repeat="task in tasks")
+        td {{employee.employee_first_name}}
+        td {{employee.employee_last_name}}
+        td {{employee.employee_location}}
+        td {{employee.employee_job_title}}
+        td {{employee.employee_is_manager}}
+        td {{employee.employee_is_executive}}

@@ -1,0 +1,19 @@
+html
+  title My groups
+  body
+    h1(ng-show = "success") Success!
+    h1(ng-show = "failure") Failure!
+    h1 Manage groups
+    h2 Create new group
+    div(class="form")
+      p Name
+        div(class="text-box")
+          input(type="text", name="name", ng-model="form.group_name")
+      p Description
+        div(class="text-box")
+          input(type="text", name="description", ng-model="form.group_description")
+      p Members
+        div(class="text-box")
+          input(type="text", name="members", ng-model="form.group_members")
+      p
+        button(ng-click="submit()") Submit
