@@ -50,6 +50,25 @@ module.exports = {
 		});
 	},
 
+	getAllTasks: function(){
+		return new Promise(function(fulfill, reject) {
+			var client = new AWS.DynamoDB.DocumentClient();
+
+			var params = {
+					TableName : "Task"
+				};
+
+			client.scan(params, function(err, data) {
+					if (err) {
+							console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+							fulfill(err);
+					} else {
+							fulfill(data.Items);
+					}
+			});
+		});
+	},
+
 	getbyName: function(task_name) {
 		return new Promise(function(fulfill, reject) {
 			var client = new AWS.DynamoDB.DocumentClient();

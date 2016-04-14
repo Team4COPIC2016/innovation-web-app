@@ -51,6 +51,12 @@ app.get('/api/gettaskbyID/:id', function(request, response){
 		response.json(result);
 	});
 })
+
+app.get('/api/tasks/', function(request, response){
+	taskService.getAllTasks().then(function(result){
+		response.json(result);
+	});
+})
 //////////////////////////////////////////////////////////////
 app.post('/api/employee/', function(request, response){
   var employee = JSON.parse(JSON.stringify(request.body));
@@ -67,6 +73,12 @@ app.get('/api/employee/:name', function(request, response){
 
 app.get('/api/getemployeebyID/:id', function(request, response){
 	employeeService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+
+app.get('/api/employees/', function(request, response){
+	employeeService.getAllEmployees().then(function(result){
 		response.json(result);
 	});
 })
@@ -89,6 +101,12 @@ app.get('/api/getprojectbyID/:id', function(request, response){
 		response.json(result);
 	});
 })
+
+app.get('/api/projects/', function(request, response){
+	projectService.getAllProjects().then(function(result){
+		response.json(result);
+	});
+})
 /////////////////////////////////////////////////////////////
 app.post('/api/group/', function(request, response){
   var group = JSON.parse(JSON.stringify(request.body));
@@ -105,6 +123,12 @@ app.get('/api/group/:name', function(request, response){
 
 app.get('/api/getgroupbyID/:id', function(request, response){
 	groupService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+
+app.get('/api/groups/', function(request, response){
+	groupService.getAllGroups().then(function(result){
 		response.json(result);
 	});
 })
@@ -127,36 +151,16 @@ app.get('/api/getlessonbyID/:id', function(request, response){
 		response.json(result);
 	});
 })
+
+app.get('/api/lessons/', function(request, response){
+	lessonService.getAllLessons().then(function(result){
+		response.json(result);
+	});
+})
 ////////////////////////////////////////////////////////////
-app.get('/api/tasks/', function(request, response){
-  var object = {
-     "task1" : {
-        "name" : "get dummy service 1",
-        "description" : "get dummy service 1",
-        "id": 1
-     },
-     "task2" : {
-        "name" : "get dummy service 2",
-        "description" : "get dummy service 2",
-        "id": 2
-     },
-     "task3" : {
-        "name" : "get dummy service 3",
-        "description" : "get dummy service 3",
-        "id": 3
-     },
-     "task4" : {
-        "name" : "get dummy service 4",
-        "description" : "get dummy service 4",
-        "id": 4
-     },
-     "task5" : {
-        "name" : "get dummy service 5",
-        "description" : "get dummy service 5",
-        "id": 5
-     },
-  }
-  response.json(object);
-});
+
+app.get('*', function(request, response) {
+	response.render('index');
+})
 
 app.listen(port);

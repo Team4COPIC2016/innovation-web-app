@@ -16,9 +16,12 @@ angular.module('app').controller('addEmployeeController', function($scope, $http
 	$scope.form = {};
 	$scope.success = false;
 	$scope.error = false;
+	$http.get('/api/employees/').then(function(response){
+		$scope.managers = response.data;
+	});
 	$scope.submit = function() {
 		$scope.success = true;
-		$http.post('http://default-environment.85izygvzu6.us-west-2.elasticbeanstalk.com/api/employee', $scope.form).then(function(data) {
+		$http.post('/api/employee', $scope.form).then(function(data) {
 			console.log(data);
 		});
 		console.log($scope.form);
@@ -30,7 +33,7 @@ angular.module('app').controller('addProjectController', function($scope, $http)
 	$scope.error = false;
 	$scope.submit = function() {
 		$scope.success = true;
-		$http.post('http://default-environment.85izygvzu6.us-west-2.elasticbeanstalk.com/api/project', $scope.form).then(function(data) {
+		$http.post('/api/project', $scope.form).then(function(data) {
 			console.log(data);
 		});
 		console.log($scope.form);
@@ -42,11 +45,8 @@ angular.module('app').controller('addTaskController', function($scope, $http) {
 	$scope.success = false;
 	$scope.error = false;
 	$scope.submit = function() {
-		$scope.success = true;
-		$http.post('http://default-environment.85izygvzu6.us-west-2.elasticbeanstalk.com/api/task', $scope.form).then(function(data) {
-			console.log(data);
+		$http.post('/api/task', $scope.form).then(function(data) {
+			$scope.success = true;
 		});
-		console.log($scope.form);
 	};
-
 });
