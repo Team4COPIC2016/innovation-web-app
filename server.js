@@ -107,9 +107,9 @@ app.get('/api/employeesInGroup/:id', function(request, response){
 	employeeService.getEmployeesInGroup(request.params.id).then(function(result){
 		var employees = [];
 		for(index = 0; index < result.length; index++){
-			employees[index] = groupService.getgroupbyID(results[index].group_id);
+			employees[index] = (result[index].employee_first_name + " " + result[index].employee_last_name);
 		}
-		response.json(result);
+		response.json(employees);
 	});
 })
 /////////////////////////////////////////////////////////////
