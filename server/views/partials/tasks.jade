@@ -1,15 +1,11 @@
 div(ng-if = "!loading")
-  table(class="table table-striped")
-    thead
-      tr
-        th(colspan="4")
-          h1 My tasks
-      tr
-        th Name
-        th Description
-        th Project
-    tbody
-      tr(ng-repeat="task in tasks")
-        td {{task.task_name}}
-        td {{task.task_description}}
-        td {{task.task_project}}
+  h1 My tasks
+  div(ng-repeat="task in tasks" class="panel-group" id="accordion")
+    div(class="panel panel-default")
+      div(class="panel-heading")
+        h4(class="panel-title")
+          a(data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index + 1}}") {{task.task_name}}
+    div(id="collapse{{$index + 1}}" class="panel-collapse collapse")
+      div(class="panel-body")
+        p Description: {{task.task_description}}
+        p Project: {{task.project_name}}

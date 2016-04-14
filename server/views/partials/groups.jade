@@ -1,15 +1,10 @@
 div(ng-if = "!loading")
-  table(class="table table-striped")
-    thead
-      tr
-        th(colspan="4")
-          h1 My groups
-      tr
-        th Name
-        th Description
-        th Members
-    tbody
-      tr(ng-repeat="group in groups")
-        td {{group.group_name}}
-        td {{group.group_description}}
-        td {{group.group_members}}
+  h1 My groups
+  div(ng-repeat="group in groups" class="panel-group" id="accordion")
+    div(class="panel panel-default")
+      div(class="panel-heading")
+        h4(class="panel-title")
+          a(data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index + 1}}") {{group.group_name}}
+    div(id="collapse{{$index + 1}}" class="panel-collapse collapse")
+      div(class="panel-body")
+        p Description: {{group.group_description}}

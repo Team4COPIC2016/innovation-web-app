@@ -1,15 +1,11 @@
 div(ng-if = "!loading")
-  table(class="table table-striped")
-    thead
-      tr
-        th(colspan="4")
-          h1 My lessons
-      tr
-        th Title
-        th Description
-        th Employee ID
-    tbody
-      tr(ng-repeat="lesson in lessons")
-        td {{lesson.lesson_title}}
-        td {{lesson.lesson_description}}
-        td {{lesson.employee_id}}
+  h1 My lessons
+  div(ng-repeat="lesson in lessons" class="panel-group" id="accordion")
+    div(class="panel panel-default")
+      div(class="panel-heading")
+        h4(class="panel-title")
+          a(data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index + 1}}") {{lesson.lesson_title}}
+    div(id="collapse{{$index + 1}}" class="panel-collapse collapse")
+      div(class="panel-body")
+        p Description: {{lesson.lesson_description}}
+        p Employee ID: {{lesson.employee_id}}
