@@ -26,6 +26,9 @@ angular.module('app').controller('addEmployeeController', function($scope, $http
 	$http.get('/api/employees/').then(function(response){
 		$scope.managers = response.data;
 	});
+	$http.get('/api/groups/').then(function(response){
+		$scope.groups = response.data;
+	});
 	$scope.submit = function() {
 		$scope.success = true;
 		$http.post('/api/employee', $scope.form).then(function(data) {
