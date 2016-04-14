@@ -1,5 +1,6 @@
 var express = require('express');
 var stylus = require('stylus');
+var cors = require('cors');
 var fs = require("fs");
 var bodyParser = require('body-parser');
 var Guid = require('guid');
@@ -17,6 +18,7 @@ var compile = function(str, path) {
 app.set('views', __dirname + '/server/views');
 app.set('view engine', 'jade');
 app.use(bodyParser());
+app.use(cors());
 app.use(stylus.middleware(
 	{
 		src : __dirname + '/public',
@@ -38,11 +40,18 @@ app.post('/api/task/', function(request, response){
   })
 });
 
-app.get('/api/gettaskbyID/:id', function(request, response){
-	var task = JSON.parse(JSON.stringify(taskService.getbyID(request.params.id)));
-	response.json(task);
-});
+app.get('/api/task/:name', function(request, response){
+	taskService.getbyName(request.params.name).then(function(result){
+		response.json(result);
+	});
+})
 
+app.get('/api/gettaskbyID/:id', function(request, response){
+	taskService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+//////////////////////////////////////////////////////////////
 app.post('/api/employee/', function(request, response){
   var employee = JSON.parse(JSON.stringify(request.body));
   employeeService.post(employee).then(function(data) {
@@ -51,15 +60,17 @@ app.post('/api/employee/', function(request, response){
 });
 
 app.get('/api/employee/:name', function(request, response){
-	var employee = JSON.parse(JSON.stringify(employeeService.getbyName(request.params.name)));
-	response.json(employee); 
+	employeeService.getbyName(request.params.name).then(function(result){
+		response.json(result);
+	});
 })
 
 app.get('/api/getemployeebyID/:id', function(request, response){
-	var employee = JSON.parse(JSON.stringify(employeeService.getbyID(request.params.id)));
-	response.json(employee);
-});
-
+	employeeService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+/////////////////////////////////////////////////////////////
 app.post('/api/project/', function(request, response){
   var project = JSON.parse(JSON.stringify(request.body));
   projectService.post(project).then(function(data) {
@@ -67,11 +78,18 @@ app.post('/api/project/', function(request, response){
   })
 });
 
-app.get('/api/project/:id', function(request, response){
-	var project = JSON.parse(JSON.stringify(projectService.get(request.params.id)));
-	response.json(project);
-});
+app.get('/api/project/:name', function(request, response){
+	projectService.getbyName(request.params.name).then(function(result){
+		response.json(result);
+	});
+})
 
+app.get('/api/getprojectbyID/:id', function(request, response){
+	projectService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+/////////////////////////////////////////////////////////////
 app.post('/api/group/', function(request, response){
   var group = JSON.parse(JSON.stringify(request.body));
   groupService.post(group).then(function(data) {
@@ -79,11 +97,18 @@ app.post('/api/group/', function(request, response){
   })
 });
 
-app.get('/api/group/:id', function(request, response){
-	var group = JSON.parse(JSON.stringify(groupService.get(request.params.id)));
-	response.json(group);
-});
+app.get('/api/group/:name', function(request, response){
+	groupService.getbyName(request.params.name).then(function(result){
+		response.json(result);
+	});
+})
 
+app.get('/api/getgroupbyID/:id', function(request, response){
+	groupService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+//////////////////////////////////////////////////////////////
 app.post('/api/lesson/', function(request, response){
   var lesson = JSON.parse(JSON.stringify(request.body));
   lessonService.post(lesson).then(function(data) {
@@ -91,11 +116,18 @@ app.post('/api/lesson/', function(request, response){
   })
 });
 
-app.get('/api/lesson/:id', function(request, response){
-	var lesson = JSON.parse(JSON.stringify(lessonService.get(request.params.id)));
-	response.json(lesson);
-});
+app.get('/api/lesson/:name', function(request, response){
+	lessonService.getbyName(request.params.name).then(function(result){
+		response.json(result);
+	});
+})
 
+app.get('/api/getlessonbyID/:id', function(request, response){
+	lessonService.getbyID(request.params.id).then(function(result){
+		response.json(result);
+	});
+})
+////////////////////////////////////////////////////////////
 app.get('/api/tasks/', function(request, response){
   var object = {
      "task1" : {

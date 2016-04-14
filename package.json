@@ -23,6 +23,7 @@
     "aws-sdk": "^2.3.3",
     "body-parser": "^1.15.0",
     "bootstrap": "^4.0.0-alpha.2",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
     "guid": "0.0.12",
     "jade": "^1.11.0",
