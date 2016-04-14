@@ -102,13 +102,23 @@ app.get('/api/employees/', function(request, response){
 		response.json(result);
 	});
 })
+
+app.get('/api/employeesInGroup/:id', function(request, response){
+	employeeService.getEmployeesInGroup(request.params.id).then(function(result){
+		var employees = [];
+		for(index = 0; index < result.length; index++){
+			employees[index] = groupService.getgroupbyID(results[index].group_id);
+		}
+		response.json(result);
+	});
+})
 /////////////////////////////////////////////////////////////
 app.post('/api/project/', function(request, response){
   var project = JSON.parse(JSON.stringify(request.body));
   projectService.post(project).then(function(data) {
     response.json(data);
-  })
-});
+  });
+})
 
 app.get('/api/project/:name', function(request, response){
 	projectService.getbyName(request.params.name).then(function(result){
@@ -116,8 +126,8 @@ app.get('/api/project/:name', function(request, response){
 	});
 })
 
-app.get('/api/getprojectbyID/:id', function(request, response){
-	projectService.getbyID(request.params.id).then(function(result){
+app.get('/api/getProjectByID/:id', function(request, response){
+	projectService.getByID(request.params.id).then(function(result){
 		response.json(result);
 	});
 })
@@ -177,7 +187,41 @@ app.get('/api/lessons/', function(request, response){
 		response.json(result);
 	});
 })
+
+app.get('/api/lessonsForEmployee/:id', function(request, response){
+	lessonService.getLessonsForEmployee(request.params.id).then(function(result){
+		var lessons = [];
+		for(index = 0; index < result.length; index++){
+			lessons[index] = result[index].lesson_name;
+		}
+		response.json(lessons);
+	})
+})
 ////////////////////////////////////////////////////////////
+app.get('/api/tasksDummy/', function(request, response){
+   var object = {
+      "task1" : {
+         "name" : "Harvest Oil",
+         "description" : "get it from the ground",
+         "id": 1
+      },
+      "task2" : {
+         "name" : "Stay Safe",
+         "description" : "dont get hurt dummy",
+         "id": 2
+      },
+      "task3" : {
+         "name" : "Have Fun",
+         "description" : "Money=Happiness!",
+         "id": 3
+      },
+   }
+   response.json(object);
+  });
+
+	app.get('/api/oil/', function(request, response){
+	   response.json("This is a project about oil.");
+	  });
 
 app.get('*', function(request, response) {
 	response.render('index');
