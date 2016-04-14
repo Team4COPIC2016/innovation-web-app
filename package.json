@@ -24,6 +24,7 @@
     "body-parser": "^1.15.0",
     "bootstrap": "^4.0.0-alpha.2",
     "express": "^4.13.4",
+    "guid": "0.0.12",
     "jade": "^1.11.0",
     "promise": "^7.1.1",
     "stylus": "^0.54.2"

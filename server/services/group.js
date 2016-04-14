@@ -3,11 +3,11 @@ var Promise = require('promise')
 AWS.config.region = 'us-west-2';
 
 module.exports = {
-	post: function(task) {
+	post: function(group) {
 		return new Promise(function(fulfill, reject) {
 			var params = {
-			    TableName: 'Task',
-			    Item: task
+			    TableName: 'Group',
+			    Item: group
 		    }
 		    var client = new AWS.DynamoDB.DocumentClient();
 		    client.put(params, function(err, data) {
@@ -21,7 +21,7 @@ module.exports = {
 			});
 		});
 	},
-	get: function(task_id) {
-		
+	get: function(group_id) {
+
 	},
 }
