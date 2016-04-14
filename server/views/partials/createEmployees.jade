@@ -24,11 +24,8 @@ html
         div(class="text-box")
           select(ng-model = "form.employee_group", ng-options = "group.employee_name as (group.group_name) for group in groups")
       p Manager
-        div(class="text-box")
-          input(type="checkbox", name="isManager", ng-model="form.employee_is_manager")
-
+        input(type="checkbox", name="isManager", ng-model="form.employee_is_manager")
       p Executive
-        div(class="text-box")
-          input(type="checkbox", name="isExecutive", ng-model="form.employee_is_executive")
+        input(type="checkbox", name="isExecutive", ng-model="form.employee_is_executive")
       p
         button(ng-click="submit()") Submit
