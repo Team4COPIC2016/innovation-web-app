@@ -1,0 +1,19 @@
+html
+  title My tasks
+  body
+    h1(ng-show = "success") Success!
+    h1(ng-show = "failure") Failure!
+    h1 Manage tasks
+    h2 Create new task
+    div(class="form")
+      p Name
+        div(class="text-box")
+          input(type="text", name="name", ng-model="form.name")
+      p Description
+        div(class="text-box")
+          input(type="text", name="description", ng-model="form.description")
+      p Project
+        div(class="text-box")
+          input(type="text", name="project", ng-model="form.project")
+      p
+        button(ng-click="submit()") Submit

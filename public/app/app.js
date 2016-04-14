@@ -6,9 +6,11 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 		requireBase : false
 	});
 	$routeProvider.when('/', { templateUrl: '/partials/homepage.jade' })
-	.when('/tasks', { templateUrl: '/partials/tasks.jade', controller: 'addTaskController' })
-	.when('/employees', { templateUrl: '/partials/employees.jade', controller: 'addEmployeeController' })
-	.when('/projects', { templateUrl: '/partials/projects.jade', controller: 'addProjectController' })
+	.when('/createTasks', { templateUrl: '/partials/createTasks.jade', controller: 'addTaskController' })
+	.when('/employees', { templateUrl: '/partials/employees.jade', controller: 'viewEmployeesController' })
+	.when('/projects', { templateUrl: '/partials/projects.jade', controller: 'viewProjectsController' })
+	.when('/createEmployees', { templateUrl: '/partials/createEmployees.jade', controller: 'addEmployeeController' })
+	.when('/createProjects', { templateUrl: '/partials/createProjects.jade', controller: 'addProjectController' })
 	.otherwise({ redirectTo: '/error/' });
 });
 
@@ -27,6 +29,7 @@ angular.module('app').controller('addEmployeeController', function($scope, $http
 		console.log($scope.form);
 	};
 });
+
 angular.module('app').controller('addProjectController', function($scope, $http) {
 	$scope.form = {};
 	$scope.success = false;
@@ -34,12 +37,18 @@ angular.module('app').controller('addProjectController', function($scope, $http)
 	$scope.submit = function() {
 		$scope.success = true;
 		$http.post('/api/project', $scope.form).then(function(data) {
-			console.log(data);
+			if(data.status === 200){
+				$scope.success = true;
+			}
+			else {
+				$scope.error = true;
+			}
+
 		});
-		console.log($scope.form);
 	};
 
 });
+
 angular.module('app').controller('addTaskController', function($scope, $http) {
 	$scope.form = {};
 	$scope.success = false;
@@ -49,4 +58,22 @@ angular.module('app').controller('addTaskController', function($scope, $http) {
 			$scope.success = true;
 		});
 	};
+});
+
+angular.module('app').controller('viewEmployeesController', function($scope, $http) {
+	$scope.loading = true;
+	$scope.employees = [];
+	$http.get('/api/employees/').then(function(response){
+		$scope.employees = response.data;
+		$scope.loading = false;
+	});
+});
+
+angular.module('app').controller('viewProjectsController', function($scope, $http) {
+	$scope.loading = true;
+	$scope.projects = [];
+	$http.get('/api/projects/').then(function(response){
+		$scope.projects = response.data;
+		$scope.loading = false;
+	});
 });
