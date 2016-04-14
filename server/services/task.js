@@ -122,4 +122,32 @@ module.exports = {
 			});
 		});
 	},
+
+	getTasksForProject: function(project_id) {
+		return new Promise(function(fulfill, reject) {
+			var client = new AWS.DynamoDB.DocumentClient();
+
+			var params = {
+					TableName : "Task",
+					ExpressionAttributeNames: {
+						"#project" : "project_id"
+					},
+					FilterExpression: "#project = :project",
+					ExpressionAttributeValues: {
+						":project" : project_id
+					}
+				};
+
+			client.scan(params, function(err, data) {
+					if (err) {
+							console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+							fulfill(err);
+					} else {
+							console.log("Query succeeded.");
+							console.log(data.Items);
+							fulfill(data.Items);
+					}
+			});
+		});
+	},
 }

@@ -60,7 +60,21 @@ app.get('/api/tasks/', function(request, response){
 
 app.get('/api/tasksForEmployee/:id', function(request, response){
 	taskService.getTasksForEmployee(request.params.id).then(function(result){
-		response.json(result[0].task_name);
+		var tasks = [];
+		for(index = 0; index < result.length; index++){
+			tasks[index] = result[index].task_name;
+		}
+		response.json(tasks);
+	});
+})
+
+app.get('/api/tasksForProject/:id', function(request, response){
+	taskService.getTasksForProject(request.params.id).then(function(result){
+		var tasks = [];
+		for(index = 0; index < result.length; index++){
+			tasks[index] = result[index].task_name;
+		}
+		response.json(tasks);
 	});
 })
 //////////////////////////////////////////////////////////////
