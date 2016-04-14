@@ -61,6 +61,9 @@ angular.module('app').controller('addTaskController', function($scope, $http) {
 	$http.get('/api/employees/').then(function(response){
 		$scope.employees = response.data;
 	});
+	$http.get('/api/projects/').then(function(response){
+		$scope.projects = response.data;
+	});
 	$scope.submit = function() {
 		$scope.success = true;
 		$http.post('/api/task', $scope.form).then(function(data) {

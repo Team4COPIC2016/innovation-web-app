@@ -142,8 +142,8 @@ app.post('/api/group/', function(request, response){
   var group = JSON.parse(JSON.stringify(request.body));
   groupService.post(group).then(function(data) {
     response.json(data);
-  })
-});
+  });
+})
 
 app.get('/api/group/:name', function(request, response){
 	groupService.getbyName(request.params.name).then(function(result){

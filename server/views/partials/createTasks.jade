@@ -14,7 +14,7 @@ html
           input(type="text", name="description", ng-model="form.task_description")
       p Project
         div(class="text-box")
-          input(type="text", name="project", ng-model="form.task_project")
+          select(ng-model = "form.project_name", ng-options = "project.project_name as project.project_name for project in projects")
       p Employee
         div(class="text-box")
           select(ng-model = "form.employee_id", ng-options = "employee.employee_id as (employee.employee_first_name + ' ' + employee.employee_last_name) for employee in employees")

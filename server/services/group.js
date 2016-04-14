@@ -6,6 +6,7 @@ AWS.config.region = 'us-west-2';
 module.exports = {
 	post: function(group) {
 		return new Promise(function(fulfill, reject) {
+			console.log(group);
       group["group_id"] = Guid.create().value;
 			var params = {
 			    TableName: 'Group',
