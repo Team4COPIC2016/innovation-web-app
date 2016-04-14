@@ -30,11 +30,11 @@ module.exports = {
       var params = {
 					TableName : "Project",
 					ExpressionAttributeNames: {
-						"#name" : "project_name"
+						"#id" : "project_id"
 					},
-					FilterExpression: "#name = :name",
+					FilterExpression: "#id = :id",
 					ExpressionAttributeValues: {
-						":name" : project_name
+						":id" : project_id
 					}
 				};
 

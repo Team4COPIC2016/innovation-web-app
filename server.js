@@ -57,6 +57,12 @@ app.get('/api/tasks/', function(request, response){
 		response.json(result);
 	});
 })
+
+app.get('/api/tasksForEmployee/:id', function(request, response){
+	taskService.getTasksForEmployee(request.params.id).then(function(result){
+		response.json(result[0].task_name);
+	});
+})
 //////////////////////////////////////////////////////////////
 app.post('/api/employee/', function(request, response){
   var employee = JSON.parse(JSON.stringify(request.body));
@@ -71,7 +77,7 @@ app.get('/api/employee/:name', function(request, response){
 	});
 })
 
-app.get('/api/getemployeebyID/:id', function(request, response){
+app.get('/api/getEmployeeByID/:id', function(request, response){
 	employeeService.getbyID(request.params.id).then(function(result){
 		response.json(result);
 	});

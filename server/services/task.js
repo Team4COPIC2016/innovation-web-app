@@ -30,11 +30,11 @@ module.exports = {
 			var params = {
 					TableName : "Task",
 					ExpressionAttributeNames: {
-						"#name" : "task_name"
+						"#id" : "task_id"
 					},
-					FilterExpression: "#name = :name",
+					FilterExpression: "#id = :id",
 					ExpressionAttributeValues: {
-						":name" : task_name
+						":id" : task_id
 					}
 				};
 
@@ -89,6 +89,34 @@ module.exports = {
 							console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
 							fulfill(err);
 					} else {
+							fulfill(data.Items);
+					}
+			});
+		});
+	},
+
+	getTasksForEmployee: function(employee_id) {
+		return new Promise(function(fulfill, reject) {
+			var client = new AWS.DynamoDB.DocumentClient();
+
+			var params = {
+					TableName : "Task",
+					ExpressionAttributeNames: {
+						"#employee" : "employee_id"
+					},
+					FilterExpression: "#employee = :employee",
+					ExpressionAttributeValues: {
+						":employee" : employee_id
+					}
+				};
+
+			client.scan(params, function(err, data) {
+					if (err) {
+							console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+							fulfill(err);
+					} else {
+							console.log("Query succeeded.");
+							console.log(data.Items);
 							fulfill(data.Items);
 					}
 			});
