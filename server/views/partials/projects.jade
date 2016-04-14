@@ -1,16 +1,18 @@
 html
-  title My tasks
+  title My projects
   body
     h1(ng-show = "success") Success!
     h1(ng-show = "failure") Failure!
-    h1 Manage tasks
-    h2 Create new task
+    h1 Manage projects
+    h2 Create new project
     div(class="form")
-      p Name
+      p First name
         input(type="text", name="name", ng-model="form.name")
-      p Description
+      p Last name
         input(type="text", name="description", ng-model="form.description")
-      p Project
-        input(type="text", name="project", ng-model="form.project")
+      p Location
+        input(type="text", name="startDate", ng-model="form.startDate")
+      p Manager
+        input(type="text", name="estCost", ng-model="form.estCost")
       p
         button(ng-click="submit()") Submit
