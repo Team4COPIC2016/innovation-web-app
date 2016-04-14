@@ -1,21 +1,16 @@
 div(ng-if = "!loading")
-  table(class="table table-striped")
-    thead
-      tr
-        th(colspan="4")
-          h1 My employees
-      tr
-        th First Name
-        th Last Name
-        th Location
-        th Job Title
-        th Is Manager
-        th Is Executive
-    tbody
-      tr(ng-repeat="employee in employees")
-        td {{employee.employee_first_name}}
-        td {{employee.employee_last_name}}
-        td {{employee.employee_location}}
-        td {{employee.employee_job_title}}
-        td {{employee.employee_is_manager}}
-        td {{employee.employee_is_executive}}
+  h1 My employees
+  div(ng-repeat="employee in employees" class="panel-group" id="accordion")
+    div(class="panel panel-default")
+      div(class="panel-heading")
+        h4(class="panel-title")
+          a(data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index + 1}}") {{employee.employee_first_name}}&nbsp;{{employee.employee_last_name}}
+    div(id="collapse{{$index + 1}}" class="panel-collapse collapse")
+      div(class="panel-body")
+        p ID: {{employee.employee_id}}
+        p Tasks:
+          p(ng-repeat="task in tasks track by $index") {{$index}}. {{task}}
+        p Location: {{employee.employee_location}}
+        p Job title: {{employee.employee_job_title}}
+        p Is manager?: {{employee.employee_is_manager}}
+        p Is executive?: {{employee.employee_is_executive}}

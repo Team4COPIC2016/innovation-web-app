@@ -121,10 +121,17 @@ angular.module('app').controller('addLessonController', function($scope, $http) 
 angular.module('app').controller('viewEmployeesController', function($scope, $http) {
 	$scope.loading = true;
 	$scope.employees = [];
+	$scope.tasks = [];
 	$http.get('/api/employees/').then(function(response){
 		$scope.employees = response.data;
 		$scope.loading = false;
 	});
+	$http.get('/api/tasksForEmployee/'+'db97e69f-cebb-35cc-1e88-5d3dc69c18ae').then(function(response){
+		$scope.tasks = response.data;
+		$scope.loading = false;
+	});
+
+
 });
 
 angular.module('app').controller('viewProjectsController', function($scope, $http) {

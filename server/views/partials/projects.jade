@@ -1,21 +1,15 @@
+
 div(ng-if = "!loading")
-  table(class="table table-striped")
-    thead
-      tr
-        th(colspan="4")
-          h1 My employees
-      tr
-        th Project Name
-        th Description
-        th Start Date
-        th End Date
-        th Estimated Cost
-        th Estimated ROI
-    tbody
-      tr(ng-repeat="project in projects")
-        td {{project.project_name}}
-        td {{project.project_description}}
-        td {{project.project_start_date}}
-        td {{project.project_end_date}}
-        td {{employee.project_estimated_cost}}
-        td {{employee.project_estimated_roi}}
+  h1 My projects
+  div(ng-repeat="project in projects" class="panel-group" id="accordion")
+    div(class="panel panel-default")
+      div(class="panel-heading")
+        h4(class="panel-title")
+          a(data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index + 1}}") {{project.project_name}}
+    div(id="collapse{{$index + 1}}" class="panel-collapse collapse")
+      div(class="panel-body")
+        p Description: {{project.project_description}}
+        p Start date: {{project.project_start_date}}
+        p End date: {{project.project_end_date}}
+        p Estimated cost: {{project.project_estimated_cost}}
+        p Estimate ROI: {{project.project_estimated_roi}}
